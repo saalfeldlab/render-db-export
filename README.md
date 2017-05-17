@@ -2,14 +2,17 @@
 
 ## Compile and package
 
-On a platform with Maven installed, i.e. your local workstation.  Keep in mind that you need the render artifacts that are not present on a public repository, i.e. need to be compiled and installed first:
+Work on a platform with Maven installed, i.e. your local workstation.  Keep in mind that you need the render artifacts at fluid version `0.3.0-SNAPSHOT` (`1.0.0` when released) that are not present on a public repository yet, i.e. you need to compile and install them first:
 
 ```bash
+cd ~/workspace
+git clone https://github.com/saalfeldlab/render.git
 cd ~/workspace/render
+git checkout acac9847cf157e677bc79847b587d65e8676c6f6
 mvn clean install
 ```
 
-Then the fat jar for Spark
+Then build the fat jar for Spark
 
 ```bash
 cd ~/workspace/render-db-export
@@ -22,7 +25,7 @@ Log into the cluster with the same paths available or copy the resulting jar and
 
 ```bash
 ssh login1
-cd ~/workspace/render-align
+cd ~/workspace/render-db-export
 ```
     
 Edit one of the example launch scripts `run-example.sh` and set the number of nodes that you want to use (e.g. 20 or 40), and all other parameters that will be passed to the job.  Then
